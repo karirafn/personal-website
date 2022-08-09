@@ -1,3 +1,53 @@
 ﻿@page "/"
 
-<PageTitle>Index</PageTitle>
+<PageTitle>Kári Rafn Karlsson</PageTitle>
+
+<div class="row">
+    <div class="col-xl-6 mx-auto">
+        <PeriodSection Title="Employment" Entries="@_experience"/>
+        <PeriodSection Title="Education" Entries="@_education"/>
+    </div>
+</div>
+
+@code {
+    private static IEnumerable<PeriodEntry> _experience = new PeriodEntry[]
+    {
+        new("Software Developer", "Efla", new DateOnly(2022, 11, 1), null, new string []
+        {
+
+        }),
+        new("PDM and Cloud Consultant", "Self employed", new DateOnly(2020, 11, 1), null, new string[]
+        {
+            "Operation of Autodesk Vault PDM software in Azure and design of custom add-ins for Autodesk software",
+        }),
+        new("PDM/CAD Specialist and Software Developer", "Skaginn 3X", new DateOnly(2020, 1, 1), new DateOnly(2022, 10, 31), new string[]
+        {
+            "Operation of Autodesk Inventor CAD software and Autodesk Vault PDM system",
+            "Design, development and implementation of REST API and Blazor Server internal website using .NET 6 (Core) and CI/CD with GitHub Actions",
+            "Development of software used for automatic processing and flow of data between PDM and ERP (Enterprise Resource Planning) systems, " +
+            "e.g. cost calculations for production parts, validation and correction of CAD data, etc."
+        }),
+        new("Mechanical Designer", "Skaginn 3X", new DateOnly(2018, 2, 1), new DateOnly(2022, 1, 1), new string[]
+        {
+            "Product owner of Automatic Plate Freezer",
+            "Definition of internal processes and procedures",
+            "Process automation using .NET",
+            "Setup, implementation and administration of Autodesk Vault PDM system",
+            "Part standardisation"
+        }),
+        new("Mechanical Designer", "VHE", new DateOnly(2015, 2, 1), new DateOnly(2017, 1, 1), new string[]
+        {
+            "Design of various machinery",
+            "Process automation using .NET",
+            "Design of product configurator using .NET",
+            "Setup, implementation and administration of Autodesk Vault Pdm system"
+        }),
+    };
+
+    private static readonly IEnumerable<PeriodEntry> _education = new PeriodEntry[]
+    {
+        new("M.Sc. Mechanical Engineering", "Reykjavík University", new DateOnly(2009, 9, 1)),
+        new("B.Sc. Mechatronic Engineering", "Reykjavík University", new DateOnly(2006, 9, 1), new DateOnly(2009, 6, 1)),
+        new("Natural History Programme", "Comprehensive Secondary School of West Iceland", new DateOnly(2001, 9, 1), new DateOnly(2005, 6, 1))
+    };
+}

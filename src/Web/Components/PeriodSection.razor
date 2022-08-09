@@ -1,0 +1,36 @@
+﻿<div class="card my-3">
+    <div class="card-header">
+        <h5>@Title</h5>
+    </div>
+    <div class="card-body">
+        <table class="table table-hover">
+            <tbody>
+                @foreach (PeriodEntry e in Entries)
+                {
+                    <tr @onclick="@(() => _selectedEntry = _selectedEntry != e ? e : null)">
+                        <td width="150">
+                            <strong>@e.Period</strong>
+                        </td>
+                        <td>
+                            <strong>@e.Title</strong>, <em>@e.Subtitle</em>
+                            @if (_selectedEntry == e && _selectedEntry.Details.Any())
+                            {
+                                @foreach (var detail in e.Details)
+                                {
+                                    <p>@detail</p>
+                                }
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@code {
+    [Parameter] public string Title { get; set; } = string.Empty;
+    [Parameter] public IEnumerable<PeriodEntry> Entries { get; set; } = Enumerable.Empty<PeriodEntry>();
+
+    private PeriodEntry? _selectedEntry;
+}
